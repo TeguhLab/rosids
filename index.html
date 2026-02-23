@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Rosids Research Group - Indonesia</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --forest-dark: #0d1f0d;
+            --forest: #1a3a1a;
+            --forest-light: #2d5a2d;
+            --sage: #87a878;
+            --cream: #f5f5f0;
+            --warm-white: #fafaf8;
+            --gold: #c9a227;
+            --gold-light: #d4b85a;
+            --text-dark: #1a1a1a;
+            --text-light: #5a5a5a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--warm-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            transition: all 0.4s ease;
+            border-bottom: 1px solid rgba(26, 58, 26, 0.1);
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 5%;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--forest), var(--forest-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 15px rgba(26, 58, 26, 0.3);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--forest);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--forest);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--forest);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--forest);
+            color: white !important;
+            padding: 0.8rem 1.8rem !important;
+            border-radius: 50px;
+            transition: all 0.3s !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--forest-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(26, 58, 26, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--forest);
+            width: 45px;
+            height: 45px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .mobile-menu:hover {
+            background: var(--cream);
+        }
+
+        /* Hero Section - Full Screen */
+        .hero {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(13, 31, 13, 0.85), rgba(26, 58, 26, 0.9)), 
+                        url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 5% 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            width: 100%;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+            font-style: italic;
+            position: relative;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold);
+            opacity: 0.5;
+            border-radius: 2px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 162, 39, 0.5);
+            background: var(--gold-light);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--forest);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Base */
+        section {
+            width: 100%;
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--forest);
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.15rem;
+            margin-top: 2rem;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--warm-white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            color: var(--forest);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            height: 600px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13, 31, 13, 0.4), transparent);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(26, 58, 26, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--forest);
+            display: block;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Leader Section */
+        .leader {
+            background: linear-gradient(135deg, #f0f4f0, #e8f0e8);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .leader-card {
+            background: white;
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--forest-light), var(--forest));
+            opacity: 0.03;
+            border-radius: 0 0 0 100%;
+        }
+
+        .leader-image {
+            width: 300px;
+            height: 380px;
+            border-radius: 20px;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .leader-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .leader-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--gold);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .leader-info h3 {
+            font-size: 2.5rem;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-role {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .leader-desc {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+
+        .leader-contact {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: var(--cream);
+            color: var(--forest);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid rgba(26, 58, 26, 0.1);
+        }
+
+        .contact-btn:hover {
+            background: var(--forest);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(26, 58, 26, 0.2);
+        }
+
+        /* Team Section */
+        .team {
+            background: var(--warm-white);
+            min-height: 100vh;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        }
+
+        .team-image {
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+
+        .team-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13, 31, 13, 0.9), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .team-card:hover .team-overlay {
+            opacity: 1;
+        }
+
+        .team-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .team-social a {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--forest);
+            text-decoration: none;
+            transition: all 0.3s;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .team-card:hover .team-social a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .team-card:hover .team-social a:nth-child(1) { transition-delay: 0.1s; }
+        .team-card:hover .team-social a:nth-child(2) { transition-delay: 0.2s; }
+        .team-card:hover .team-social a:nth-child(3) { transition-delay: 0.3s; }
+
+        .team-social a:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-3px) !important;
+        }
+
+        .team-body {
+            padding: 2rem;
+        }
+
+        .team-body h4 {
+            font-size: 1.3rem;
+            color: var(--forest);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Research Section */
+        .research {
+            background: linear-gradient(135deg, var(--forest-dark), var(--forest));
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .research .section-header h2 {
+            color: white;
+        }
+
+        .research .section-header h2::after {
+            background: var(--gold);
+        }
+
+        .research .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .research-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .research-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .research-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gold);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .research-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .research-card p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--warm-white);
+            padding: 100px 0;
+        }
+
+        .gallery .section-header {
+            padding: 0 5%;
+        }
+
+        .gallery-slider {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 2rem 5%;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .gallery-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-item {
+            flex: 0 0 400px;
+            height: 500px;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            scroll-snap-align: start;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13, 31, 13, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--cream);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            color: var(--forest);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info > p {
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon-box {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--forest);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-details p, .contact-details a {
+            color: var(--text-light);
+            text-decoration: none;
+            line-height: 1.7;
+            transition: color 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: var(--forest);
+        }
+
+        .contact-form-wrapper {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        .contact-form-wrapper h3 {
+            color: var(--forest);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--forest);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #e8e8e8;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: var(--warm-white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--forest);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(26, 58, 26, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--forest);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--forest-light);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(26, 58, 26, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest-dark);
+            color: white;
+            padding: 80px 5% 40px;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .footer-social a:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.95rem;
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-content,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .leader-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 3rem 2rem;
+            }
+
+            .leader-image {
+                width: 250px;
+                height: 320px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .gallery-item {
+                flex: 0 0 300px;
+                height: 400px;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .hero {
+                padding: 100px 5% 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <span class="logo-text">Rosids Research</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#tim">Tim</a></li>
+                <li><a href="#riset">Riset</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-microscope"></i> Independent Research Community
+            </div>
+            <h1>Mengungkap Keanekaragaman <span>Rosids</span> Indonesia</h1>
+            <p>Komunitas peneliti independen yang mendalami biosistematika, evolusi, dan konservasi tumbuhan Rosids di kepulauan Nusantara</p>
+            <div class="cta-buttons">
+                <a href="#tim" class="btn btn-primary">
+                    <i class="fas fa-users"></i> Jelajahi Tim
+                </a>
+                <a href="#riset" class="btn btn-secondary">
+                    <i class="fas fa-flask"></i> Lihat Riset
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">10</span>
+                    <span class="hero-stat-label">Peneliti</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">50+</span>
+                    <span class="hero-stat-label">Publikasi</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">15</span>
+                    <span class="hero-stat-label">Proyek</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="tentang">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Tentang Kami</h2>
+                <p>Rosids Research Group adalah komunitas ilmiah independen yang fokus pada studi tumbuhan berbunga kelompok Rosids</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <h3>Menjelajahi Kehidupan Berbunga di Nusantara</h3>
+                    <p>Rosids Research Group didirikan oleh sekelompok peneliti yang memiliki passion mendalam terhadap keanekaragaman tumbuhan Indonesia. Kami berfokus pada kelompok Rosids yang mencakup famili-famili penting seperti Fabaceae (polong-polongan), Myrtaceae (jambu-jambuan), dan banyak famili ekonomis lainnya.</p>
+                    <p>Dengan menggabungkan metode morfologi klasik dan teknik molekuler modern, kami berupaya mengungkap hubungan filogenetik, pola evolusi, dan strategi konservasi tumbuhan Rosids di Indonesia.</p>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <span class="stat-number">10</span>
+                            <div class="stat-label">Peneliti Aktif</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">50+</span>
+                            <div class="stat-label">Publikasi</div>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">15</span>
+                            <div class="stat-label">Proyek Riset</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image reveal">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=600&fit=crop" alt="Research in forest">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leader Section -->
+    <section class="leader" id="ketua">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Ketua Research Group</h2>
+                <p>Pimpinan dan founder komunitas riset kami</p>
+            </div>
+            <div class="leader-card reveal">
+                <div class="leader-image">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop" alt="Dr. Deden Girmansyah">
+                    <div class="leader-badge">Founder</div>
+                </div>
+                <div class="leader-info">
+                    <h3>Dr. Deden Girmansyah, M.Si.</h3>
+                    <span class="leader-role">Ketua Research Group</span>
+                    <p class="leader-desc">Spesialis dalam biosistematika dan evolusi tumbuhan dengan pengalaman lebih dari 15 tahun meneliti keanekaragaman flora Indonesia. Fokus pada sistematika tumbuhan berbunga dan konservasi keanekaragaman hayati.</p>
+                    <div class="leader-contact">
+                        <a href="mailto:deden@rosids-research.org" class="contact-btn">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="#" class="contact-btn">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="#" class="contact-btn">
+                            <i class="fab fa-researchgate"></i> ResearchGate
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="tim">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Anggota Tim</h2>
+                <p>Tim peneliti multidisiplin yang berdedikasi dalam studi Rosids</p>
+            </div>
+            <div class="team-grid">
+                <!-- Member 1 -->
+                <div class="team-card reveal">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" alt="Dr. Abdulrokhman">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-researchgate"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Dr. Abdulrokhman Kartonegoro, M.Si.</h4>
+                        <span class="team-role">Peneliti Senior</span>
+                        <p class="team-desc">Ahli sistematika tumbuhan dengan fokus pada taksonomi dan klasifikasi flora Malesia.</p>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="team-card reveal">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Dr. Julisasi">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-researchgate"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Dr. Julisasi Tri Hadiah, M.Sc.</h4>
+                        <span class="team-role">Peneliti Molekuler</span>
+                        <p class="team-desc">Spesialis filogenetik molekuler dan biosistematika tumbuhan berbunga.</p>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="team-card reveal">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Muhammad Rifqi">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Muhammad Rifqi Hariri, M.Si.</h4>
+                        <span class="team-role">Peneliti Ekologi</span>
+                        <p class="team-desc">Fokus pada ekologi tumbuhan dan interaksi spesies dalam ekosistem hutan.</p>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="team-card reveal">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop" alt="Dr. Nanda">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-researchgate"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Dr. Nanda Utami</h4>
+                        <span class="team-role">Peneliti Botani</span>
+                        <p class="team-desc">Ahli dalam anatomi tumbuhan dan identifikasi spesies Rosids.</p>
+                    </div>
+                </div>
+
+                <!-- Member 5 -->
+                <div class="team-card reveal">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" alt="Dr. Rugayah">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-researchgate"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Dr. Rugayah, M.Sc.</h4>
+                        <span class="team-role">Peneliti Taksonomi</span>
+                        <p class="team-desc">Spesialis revisi taksonomi dan deskripsi spesies baru flora Indonesia.</p>
+                    </div>
+                </div>
+
+                <!-- Member 6 -->
+                <div class="team-card reveal">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="Tri Warseno">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Tri Warseno, M.Si.</h4>
+                        <span class="team-role">Peneliti Konservasi</span>
+                        <p class="team-desc">Fokus pada konservasi ex-situ dan in-situ tumbuhan endemik.</p>
+                    </div>
+                </div>
+
+                <!-- Member 7 -->
+                <div class="team-card reveal">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop" alt="Tri Yuni">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-researchgate"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Tri Yuni Indah Wulansari, M.Sc.</h4>
+                        <span class="team-role">Peneliti Biokimia</span>
+                        <p class="team-desc">Mempelajari metabolit sekunder dan potensi bioaktif tumbuhan Rosids.</p>
+                    </div>
+                </div>
+
+                <!-- Member 8 -->
+                <div class="team-card reveal">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop" alt="Wisnu">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-500px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Wisnu Handoyo Ardi, M.Si.</h4>
+                        <span class="team-role">Peneliti & Fotografer</span>
+                        <p class="team-desc">Dokumentasi keanekaragaman tumbuhan dan digitalisasi spesimen.</p>
+                    </div>
+                </div>
+
+                <!-- Member 9 -->
+                <div class="team-card reveal">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop" alt="Yessi">
+                        <div class="team-overlay">
+                            <div class="team-social">
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-researchgate"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-body">
+                        <h4>Yessi Santika, M.Si.</h4>
+                        <span class="team-role">Peneliti Biogeografi</span>
+                        <p class="team-desc">Mempelajari pola distribusi dan biogeografi tumbuhan di Wallacea.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="research" id="riset">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Topik Riset</h2>
+                <p>Fokus penelitian kelompok dalam mendalami biosistematika dan evolusi Rosids</p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card reveal">
+                    <div class="research-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h4>Karakter Histologi & Molekuler Rotan</h4>
+                    <p>Studi karakter histologi dan molekuler rotan berpotensi dari Kalimantan untuk meningkatkan referensi ilmiah nasional.</p>
+                    <div class="research-tags">
+                        <span class="tag">Rotan</span>
+                        <span class="tag">Kalimantan</span>
+                        <span class="tag">Molekuler</span>
+                    </div>
+                </div>
+
+                <div class="research-card reveal">
+                    <div class="research-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h4>Pustaka DNA Dipterokarpa</h4>
+                    <p>Peningkatan nilai ilmiah koleksi Dipterokarpa melalui konstruksi pustaka DNA untuk konservasi.</p>
+                    <div class="research-tags">
+                        <span class="tag">Dipterokarpa</span>
+                        <span class="tag">DNA Barcoding</span>
+                        <span class="tag">Konservasi</span>
+                    </div>
+                </div>
+
+                <div class="research-card reveal">
+                    <div class="research-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Sistematika Begonia di Wallacea</h4>
+                    <p>Studi sistematika genus Begonia (Begoniaceae) di wilayah Wallacea, mencakup identifikasi dan filogeni.</p>
+                    <div class="research-tags">
+                        <span class="tag">Begonia</span>
+                        <span class="tag">Wallacea</span>
+                        <span class="tag">Sistematika</span>
+                    </div>
+                </div>
+
+                <div class="research-card reveal">
+                    <div class="research-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h4>Morfometri Cassine koordersii</h4>
+                    <p>Analisis morfometri dan barcoding-gap untuk pengungkapan status taksonomi Cassine koordersii endemik Jawa Timur.</p>
+                    <div class="research-tags">
+                        <span class="tag">Cassine</span>
+                        <span class="tag">Endemik</span>
+                        <span class="tag">Jawa Timur</span>
+                    </div>
+                </div>
+
+                <div class="research-card reveal">
+                    <div class="research-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4>Biodiversitas Florikultura</h4>
+                    <p>Studi keanekaragaman hayati sumber daya genetik tanaman hias untuk pemanfaatan berkelanjutan.</p>
+                    <div class="research-tags">
+                        <span class="tag">Florikultura</span>
+                        <span class="tag">SDG</span>
+                        <span class="tag">Berkelanjutan</span>
+                    </div>
+                </div>
+
+                <div class="research-card reveal">
+                    <div class="research-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4>SDH di Hutan Harapan</h4>
+                    <p>Penelitian dan pengembangan Sumber Daya Hayati flora dan fauna di Hutan Harapan sebagai model restorasi.</p>
+                    <div class="research-tags">
+                        <span class="tag">Hutan Harapan</span>
+                        <span class="tag">Restorasi</span>
+                        <span class="tag">SDH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="galeri">
+        <div class="section-header reveal">
+            <h2>Galeri Eksplorasi</h2>
+            <p>Dokumentasi perjalanan penelitian dan keindahan Rosids di habitat aslinya</p>
+        </div>
+        <div class="gallery-slider">
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=600&h=800&fit=crop" alt="Forest">
+                <div class="gallery-overlay">
+                    <h4>Hutan Kalimantan</h4>
+                    <p>Eksplorasi rotan dan tumbuhan liar</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?w=600&h=800&fit=crop" alt="Begonia">
+                <div class="gallery-overlay">
+                    <h4>Begonia Spesies</h4>
+                    <p>Koleksi dari pegunungan Wallacea</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&h=800&fit=crop" alt="Rattan">
+                <div class="gallery-overlay">
+                    <h4>Rotan Berpotensi</h4>
+                    <p>Studi di habitat alami Kalimantan</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?w=600&h=800&fit=crop" alt="Dipterocarp">
+                <div class="gallery-overlay">
+                    <h4>Pohon Dipterokarpa</h4>
+                    <p>Spesimen raksasa di hutan hujan</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&h=800&fit=crop" alt="Rainforest">
+                <div class="gallery-overlay">
+                    <h4>Hutan Hujan Tropis</h4>
+                    <p>Ekosistem kaya keanekaragaman</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=800&fit=crop" alt="Field work">
+                <div class="gallery-overlay">
+                    <h4>Kegiatan Lapangan</h4>
+                    <p>Tim di lokasi penelitian</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontak">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Hubungi Kami</h2>
+                <p>Tertarik berkolaborasi atau ingin mengetahui lebih lanjut? Hubungi tim kami</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info reveal">
+                    <h3>Mari Berkolaborasi</h3>
+                    <p>Kami terbuka untuk kolaborasi penelitian, kunjungan lapangan, dan pertukaran pengetahuan tentang biosistematika tumbuhan Rosids.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon-box">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Alamat</h4>
+                            <p>Secretariat Rosids Research Group<br>Jl. Raya Bogor KM. 46<br>Cibinong, Bogor 16911</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon-box">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@rosids-research.org">info@rosids-research.org</a><br><a href="mailto:collab@rosids-research.org">collab@rosids-research.org</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon-box">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Telepon</h4>
+                            <p>+62 251 8311361<br>+62 812 3456 7890</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper reveal">
+                    <h3>Kirim Pesan</h3>
+                    <form onsubmit="event.preventDefault(); alert('Pesan terkirim!');">
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Subjek</label>
+                            <input type="text" placeholder="Subjek pesan" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan</label>
+                            <textarea rows="4" placeholder="Tulis pesan Anda..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3><i class="fas fa-leaf"></i> Rosids Research</h3>
+                <p>Komunitas peneliti independen yang mendalami biosistematika, evolusi, dan konservasi tumbuhan Rosids di Indonesia.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#tentang">Tentang</a></li>
+                    <li><a href="#tim">Tim</a></li>
+                    <li><a href="#riset">Riset</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Riset</h4>
+                <ul>
+                    <li><a href="#">Sistematika</a></li>
+                    <li><a href="#">Evolusi</a></li>
+                    <li><a href="#">Konservasi</a></li>
+                    <li><a href="#">Publikasi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Kontak</h4>
+                <ul>
+                    <li><a href="#kontak">Hubungi Kami</a></li>
+                    <li><a href="#">Kolaborasi</a></li>
+                    <li><a href="#">Media Kit</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Rosids Research Group. All rights reserved. | Independent Research Community</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+            
+            revealElements.forEach((element) => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Trigger on load
+    </script>
+
+</body>
+</html>
